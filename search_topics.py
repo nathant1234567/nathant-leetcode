@@ -43,8 +43,6 @@ def main():
     topic = sys.argv[1]
     base_dir = Path(os.getcwd())  # current folder (project root)
 
-    print(f"\nSearching for topic: {topic}\n")
-
     results = search_topics(base_dir, topic)
 
     if results:
