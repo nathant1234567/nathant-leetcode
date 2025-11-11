@@ -36,7 +36,7 @@ def search_topics(base_dir: Path, topic: str):
 def main():
     if len(sys.argv) < 2:
         print("Usage: python search_topics.py <topic>")
-        print("Note: Singular words only!!")
+        print("Note: Singular words only and no spaces!!")
         print("Example: python search_topics.py Array")
         sys.exit(1)
 
