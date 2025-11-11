@@ -5,7 +5,7 @@
 
 ### Approach (written by chatgpt, code is NOT lol):
 - Use **binary search** on the smaller array to find a partition where:
-    - All elements in the left half of both arrays are less than or equal to all elements in the right half.
+    - All elements in the left half of both array are less than or equal to all elements in the right half.
 - Let `i` be the partition index in `nums1`, and `j = (m + n + 1) / 2 - i` for `nums2`.
 - Compare boundary elements:
     - `Aleft`, `Aright` from `nums1`

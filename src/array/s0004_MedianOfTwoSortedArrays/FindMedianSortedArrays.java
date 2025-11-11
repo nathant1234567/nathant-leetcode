@@ -1,6 +1,4 @@
-package arrays.s0004_MedianOfTwoSortedArrays;
-
-import java.util.Arrays;
+package array.s0004_MedianOfTwoSortedArrays;
 
 public class FindMedianSortedArrays {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {

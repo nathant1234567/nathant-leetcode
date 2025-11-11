@@ -1,4 +1,4 @@
-package arrays.s0001_TwoSum;
+package array.s0001_TwoSum;
 
 import java.util.*;
 
