@@ -112,7 +112,8 @@ public class {class_name} {{
     }}
 
     public static void main(String[] args) {{
-        System.out.println("Running {class_name}...");
+        {class_name} solution = new {class_name}();
+        System.out.println(solution.functionhere());
     }}
 }}
 """
