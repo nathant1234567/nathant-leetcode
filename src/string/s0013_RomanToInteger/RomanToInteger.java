@@ -18,7 +18,6 @@ public class RomanToInteger {
         int result = 0;
         int n = s.length();
 
-        // Loop through each character in the string
         for (int i = 0; i < n; i++) {
             // Get the integer value of the current Roman numeral
             int currentVal = romanMap.get(s.charAt(i));

@@ -194,19 +194,31 @@ def search_by_topic(base_dir: Path):
 
 def list_all_problems(base_dir: Path):
     clear_screen()
-    category_filter = input("Enter category filter (or press Enter to show all): ").strip().lower()
+    print("List All Problems:")
+    print("Enter '1' to also display topics for each problem.")
+    print("Press Enter to continue normally.\n")
+
+    show_topics = input("Choice: ").strip() == "1"
     clear_screen()
+
     problems = []
 
     for notes_file in find_notes_files(base_dir):
-        if category_filter and category_filter not in str(notes_file.parent).lower():
-            continue
         content = read_notes(notes_file)
         if not content:
             continue
+
+        # Extract Title
         title_match = re.search(r"# Problem:\s*(.*)", content)
         title = title_match.group(1).strip() if title_match else "Unknown Problem"
-        problems.append((title, notes_file))
+
+        # Extract Topics if needed
+        topics = ""
+        if show_topics:
+            topic_match = re.search(r"## Topics:\s*(.*)", content, re.IGNORECASE)
+            topics = topic_match.group(1).strip() if topic_match else "None"
+
+        problems.append((title, notes_file, topics))
 
     if not problems:
         print("No problems found.")
@@ -215,12 +227,17 @@ def list_all_problems(base_dir: Path):
         return
 
     problems.sort(key=lambda x: extract_problem_number(x[1]))
+
     print("All Solved Problems:\n")
-    for i, (title, path) in enumerate(problems, start=1):
+    for i, (title, path, topics) in enumerate(problems, start=1):
         rel_path = path.relative_to(base_dir)
         category = get_category(path)
+
         print(f"[{i}] {title}  ({category})")
-        print(f"    {rel_path}\n")
+        print(f"    {rel_path}")
+        if show_topics:
+            print(f"    Topics: {topics}")
+        print()
 
     total = len(problems)
     print(f"Total Problems Solved: {total}")
